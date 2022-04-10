@@ -36,13 +36,8 @@ public class TempsController {
         return "admin";
     }
 
-    @GetMapping("/nombreTemps")
-    public Long comptarUsuaris() {
-        return temps.comptar();
-    }
-
     @PostMapping("/esborrarTemps")
-    public String esborrarUsuari(
+    public String esborrarTemps(
             @RequestParam String id,
             Model model) {
 
@@ -53,31 +48,31 @@ public class TempsController {
     }
 
     @PostMapping("/afegirTemps")
-    public String afegirUsuari(
+    public String afegirTemps(
             @RequestParam String ciutat,
             @RequestParam Date data,
             @RequestParam int temperatura,
             @RequestParam String icon,
             Model model) {
         temps.afegirTemps(ciutat, data, temperatura, icon);
-        model.addAttribute("usuaris", temps.trobarTots());
+        model.addAttribute("temps", temps.trobarTots());
         return "admin";
     }
     @PostMapping("/modificarTemps")
-    public String modificarUsuari(
+    public String modificarTemps(
             @RequestParam String id,
             @RequestParam String ciutat,
-            @RequestParam String data,
+            @RequestParam Date data,
             @RequestParam int temperatura,
             Model model) {
 
-        Long idUsuari = Long.parseLong(id);
-        Temps te = temps.trobarPerId(idUsuari);
+        Long idTemps = Long.parseLong(id);
+        Temps te = temps.trobarPerId(idTemps);
         te.setCiutat(ciutat);
-        /*te.setCognom(cognom);
-        te.setEmail(email);
-        te.afegirUsuari(usuari);*/
-        model.addAttribute("usuaris", temps.trobarTots());
+        te.setData(data);
+        te.setTemperatura(temperatura);
+        temps.afegirTemps(te);
+        model.addAttribute("temps", temps.trobarTots());
         return "admin";
     }
 }
