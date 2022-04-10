@@ -45,30 +45,63 @@
         </div>
     </div>
 </nav>
-
-<main class="m-5">
-    <h1 class="text-6xl font-normal leading-normal mt-0 mb-2 text-pink-800">Barcelona</h1>
-    <div class="flex">
-        <div th:each="prediccio, dades: ${temps}">
-            <div class="flex-initial max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700" th:if="${prediccio.ciutat == 'Barcelona'}">
+<main class="grid grid-cols-2 gap-4 place-items-center">
+    <div>
+        <h1 class="text-4xl font-normal leading-normal mt-0 mb-2 text-pink-800">Barcelona</h1>
+        <div class="flex flex-wrap gap-2">
+            <div class="flex-initial max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+                 th:each="prediccio: ${temps}" th:if="${prediccio.ciutat == 'Barcelona'}">
                 <div class="p-5">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" th:text="${prediccio.data}"></h5>
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                        th:text="${prediccio.data}"></h5>
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><i
-                            th:class="${prediccio.icon}"></i> <span th:text="${prediccio.temperatura}"></span> <i class="wi wi-celsius"></i></h5>
-                    <p class="mb-3 text-6xl font-normal text-gray-700 dark:text-gray-400"></p>
+                            th:class="${prediccio.icon}"></i> <span th:text="${prediccio.temperatura}"></span> <i
+                            class="wi wi-celsius"></i></h5>
                 </div>
             </div>
         </div>
     </div>
-    <h1 class="text-6xl font-normal leading-normal mt-0 mb-2 text-pink-800">Tarragona</h1>
-    <div class="flex">
-        <div th:each="prediccio, dades: ${temps}">
-            <div class="flex-initial max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700" th:if="${prediccio.ciutat == 'Tarragona'}">
+    <div>
+        <h1 class="text-4xl font-normal leading-normal mt-0 mb-2 text-pink-800">Tarragona</h1>
+        <div class="flex flex-wrap gap-2">
+            <div class="flex-initial max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+                 th:each="prediccio: ${temps}" th:if="${prediccio.ciutat == 'Tarragona'}">
                 <div class="p-5">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" th:text="${prediccio.data}"></h5>
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                        th:text="${prediccio.data}"></h5>
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><i
-                            th:class="${prediccio.icon}"></i> <span th:text="${prediccio.temperatura}"></span> <i class="wi wi-celsius"></i></h5>
-                    <p class="mb-3 text-6xl font-normal text-gray-700 dark:text-gray-400"></p>
+                            th:class="${prediccio.icon}"></i> <span th:text="${prediccio.temperatura}"></span> <i
+                            class="wi wi-celsius"></i></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h1 class="text-4xl font-normal leading-normal mt-0 mb-2 text-pink-800">Lleida</h1>
+        <div class="flex flex-wrap gap-2">
+            <div class="flex-initial max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+                 th:each="prediccio: ${temps}" th:if="${prediccio.ciutat == 'Lleida'}">
+                <div class="p-5">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                        th:text="${prediccio.data}"></h5>
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><i
+                            th:class="${prediccio.icon}"></i> <span th:text="${prediccio.temperatura}"></span> <i
+                            class="wi wi-celsius"></i></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h1 class="text-4xl font-normal leading-normal mt-0 mb-2 text-pink-800">Girona</h1>
+        <div class="flex flex-wrap gap-2">
+            <div class="flex-initial max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+                 th:each="prediccio: ${temps}" th:if="${prediccio.ciutat == 'Girona'}">
+                <div class="p-5">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                        th:text="${prediccio.data}"></h5>
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><i
+                            th:class="${prediccio.icon}"></i> <span th:text="${prediccio.temperatura}"></span> <i
+                            class="wi wi-celsius"></i></h5>
                 </div>
             </div>
         </div>

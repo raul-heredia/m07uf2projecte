@@ -30,6 +30,11 @@ public class TempsController {
         model.addAttribute("temps", temps.trobarTots());
         return "index";
     }
+    @GetMapping("/admin")
+    public String llistaTempsAdmin(Model model) {
+        model.addAttribute("temps", temps.trobarTots());
+        return "admin";
+    }
 
     @GetMapping("/nombreTemps")
     public Long comptarUsuaris() {
@@ -44,7 +49,7 @@ public class TempsController {
         Long idTemps = Long.parseLong(id);
         temps.modificarPerId(idTemps);
         model.addAttribute("temps", temps.trobarTots());
-        return "llistarUsuaris";
+        return "admin";
     }
 
     @PostMapping("/afegirTemps")
@@ -56,9 +61,9 @@ public class TempsController {
             Model model) {
         temps.afegirTemps(ciutat, data, temperatura, icon);
         model.addAttribute("usuaris", temps.trobarTots());
-        return "llistarUsuaris";
+        return "admin";
     }
-    @PostMapping("/modificarUsuari")
+    @PostMapping("/modificarTemps")
     public String modificarUsuari(
             @RequestParam String id,
             @RequestParam String ciutat,
@@ -73,6 +78,6 @@ public class TempsController {
         te.setEmail(email);
         te.afegirUsuari(usuari);*/
         model.addAttribute("usuaris", temps.trobarTots());
-        return "llistarUsuaris";
+        return "admin";
     }
 }

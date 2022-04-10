@@ -12,10 +12,10 @@ public class IndexController {
     public String inici() {
         System.out.println("Entra Inici");
         return "index";
-    }*/
+    }
     @GetMapping("/admin")
     public String admin() {
         System.out.println("Entra Admin");
         return "admin";
-    }
+    }*/
 }

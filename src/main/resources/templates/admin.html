@@ -8,6 +8,14 @@
           integrity="sha512-WrHplq3TYPEkwmx3iOWybuK9tQ4oq6Qxff1aM48V2RI4CHPU3zBXebikfBsSf+/pMwc6vNUaMQLtwG7KUoP+kA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
+<style>
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+</style>
 <body>
 <nav class="bg-neutral-300 border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
@@ -46,44 +54,124 @@
     </div>
 </nav>
 
-<main class="flex m-5">
+<main class="flex m-5 gap-2 flex-wrap ">
     <div class="flex-initial p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form class="space-y-6" action="#">
-            <h5 class="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h5>
+        <form class="space-y-6" action="/afegirTemps" method="POST" autocomplete="off">
+            <h5 class="text-xl font-medium text-gray-900 dark:text-white">Afegir Predicció Meteorológica</h5>
             <div>
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
-                    email</label>
-                <input type="email" name="email" id="email"
-                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                       placeholder="name@company.com" required>
+                <label for="ciutat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Introdueix
+                    la Ciutat</label>
+                <select class="form-select appearance-none
+                          bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        aria-label="Default select example" name="ciutat" id="ciutat" required>
+                    <option selected disabled>Ciutat</option>
+                    <option value="Barcelona">Barcelona</option>
+                    <option value="Tarragona">Tarragona</option>
+                    <option value="Lleida">Lleida</option>
+                    <option value="Girona">Girona</option>
+                </select>
             </div>
             <div>
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
-                    password</label>
-                <input type="password" name="password" id="password" placeholder="••••••••"
+                <label for="data" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Introdueix la
+                    Data</label>
+                <input type="date" name="data" id="data"
                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                        required>
             </div>
-            <div class="flex items-start">
-                <div class="flex items-start">
-                    <div class="flex items-center h-5">
-                        <input id="remember" aria-describedby="remember" type="checkbox"
-                               class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                               required>
-                    </div>
-                    <div class="ml-3 text-sm">
-                        <label for="remember" class="font-medium text-gray-900 dark:text-gray-300">Remember me</label>
-                    </div>
-                </div>
-                <a href="#" class="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500">Lost Password?</a>
+            <div>
+                <label for="temperatura" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Introdueix
+                    la Temperatura</label>
+                <input type="number" name="temperatura" id="temperatura"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                       placeholder="Temperatura" required>
+            </div>
+            <div>
+                <label for="icon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Selecciona la
+                    Predicció</label>
+                <select class="form-select appearance-none
+                          bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        aria-label="Default select example" name="icon" id="icon" required>
+                    <option selected disabled>Predicció</option>
+                    <option value="wi wi-day-sunny">Solejat</option>
+                    <option value="wi wi-cloud">Ennuvolat</option>
+                    <option value="wi wi-cloudy-gusts">Vent</option>
+                    <option value="wi wi-fog">Boira</option>
+                    <option value="wi wi-rain">Pluja</option>
+                    <option value="wi wi-thunderstorm">Tempesta Elèctrica</option>
+                    <option value="wi wi-snow">Neu</option>
+                </select>
             </div>
             <button type="submit"
                     class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Login to your account
+                Afegir
             </button>
-            <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-                Not registered? <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
+        </form>
+    </div>
+    <div class="flex-initial p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <form class="space-y-6" action="/afegirTemps" method="POST" autocomplete="off">
+            <h5 class="text-xl font-medium text-gray-900 dark:text-white">Modificar Predicció Meteorológica</h5>
+            <div>
+                <label for="ciutat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Introdueix
+                    la Ciutat</label>
+                <select class="form-select appearance-none
+                          bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        aria-label="Default select example" name="ciutat" id="ciutat" required>
+                    <option selected disabled>Ciutat</option>
+                    <option value="Barcelona">Barcelona</option>
+                    <option value="Tarragona">Tarragona</option>
+                    <option value="Lleida">Lleida</option>
+                    <option value="Girona">Girona</option>
+                </select>
             </div>
+            <div>
+                <label for="data" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Introdueix la
+                    Data</label>
+                <input type="date" name="data" id="data"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                       required>
+            </div>
+            <div>
+                <label for="temperatura" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Introdueix
+                    la Temperatura</label>
+                <input type="number" name="temperatura" id="temperatura"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                       placeholder="Temperatura" required>
+            </div>
+            <div>
+                <label for="icon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Selecciona la
+                    Predicció</label>
+                <select class="form-select appearance-none
+                          bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        aria-label="Default select example" name="icon" id="icon" required>
+                    <option selected disabled>Predicció</option>
+                    <option value="wi wi-day-sunny">Solejat</option>
+                    <option value="wi wi-cloud">Ennuvolat</option>
+                    <option value="wi wi-cloudy-gusts">Vent</option>
+                    <option value="wi wi-fog">Boira</option>
+                    <option value="wi wi-rain">Pluja</option>
+                    <option value="wi wi-thunderstorm">Tempesta Elèctrica</option>
+                    <option value="wi wi-snow">Neu</option>
+                </select>
+            </div>
+            <button type="submit"
+                    class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Afegir
+            </button>
+        </form>
+    </div>
+    <div class="flex-initial p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <form class="space-y-6" action="/esborrarTemps" method="POST" autocomplete="off">
+            <h5 class="text-xl font-medium text-gray-900 dark:text-white">Esborrar Predicció Meteorológica</h5>
+            <div>
+                <label for="id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Introdueix el Identificador de la Predicció</label>
+                <input type="number" name="id" id="id"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                       required>
+            </div>
+            <button type="submit"
+                    class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Afegir
+            </button>
         </form>
     </div>
 </main>
