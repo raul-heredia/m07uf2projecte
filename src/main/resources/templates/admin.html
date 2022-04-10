@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Inici</title>
+    <title>Panell D'Administrador</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.css"
           integrity="sha512-WrHplq3TYPEkwmx3iOWybuK9tQ4oq6Qxff1aM48V2RI4CHPU3zBXebikfBsSf+/pMwc6vNUaMQLtwG7KUoP+kA=="
@@ -15,9 +15,17 @@
         -moz-appearance: none;
         appearance: none;
     }
+
+    .tableR thead th:first-of-type {
+        border-top-left-radius: 8px;
+    }
+
+    .tableR thead th:last-of-type {
+        border-top-right-radius: 8px;
+    }
 </style>
 <body>
-<nav class="bg-neutral-300 border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
+<nav id="menu" class="bg-neutral-300 border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <a href="/" class="flex items-center">
             <i class="wi wi-day-cloudy mt-0.5 self-center text-xl whitespace-nowrap dark:text-white mr-2"></i>
@@ -53,8 +61,32 @@
         </div>
     </div>
 </nav>
+<div class="flex justify-center">
+    <div class="m-5 tableR rounded-lg w-3/5 border shadow-2x1 ">
+        <table class="table-auto w-full text-center">
+            <thead>
+            <tr class="bg-neutral-300  border-gray-200 dark:bg-gray-900">
+                <th class="p-4 text-neutral-50 text-gray-900 dark:text-neutral-300">#ID</th>
+                <th class="p-4 text-neutral-50 text-gray-900 dark:text-neutral-300">Ciutat</th>
+                <th class="p-4 text-neutral-50 text-gray-900 dark:text-neutral-300">Data</th>
+                <th class="p-4 text-neutral-50 text-gray-900 dark:text-neutral-300">Temperatura</th>
+                <th class="p-4 text-neutral-50 text-gray-900 dark:text-neutral-300">Icona</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="prediccio: ${temps}">
+                <td class="text-bold" th:text="${prediccio.id}"></td>
+                <td th:text="${prediccio.ciutat}"></td>
+                <td th:text="${prediccio.data}"></td>
+                <td th:text="${prediccio.temperatura}"></td>
+                <td><i th:class="${prediccio.icon}"></i></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-<main class="flex m-5 gap-2 flex-wrap ">
+<main class="flex m-5 gap-2 flex-wrap justify-center">
     <div class="flex-initial p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
         <form class="space-y-6" action="/afegirTemps" method="POST" autocomplete="off">
             <h5 class="text-xl font-medium text-gray-900 dark:text-white">Afegir Predicció Meteorológica</h5>
@@ -110,7 +142,8 @@
     <div class="flex-initial p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
         <form class="space-y-6" action="/modificarTemps" method="POST" autocomplete="off">
             <h5 class="text-xl font-medium text-gray-900 dark:text-white">Modificar Predicció Meteorológica</h5>
-            <label for="id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Introdueix el Identificador de la Predicció</label>
+            <label for="id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Introdueix el
+                Identificador de la Predicció</label>
             <input type="number" name="id" id="id" placeholder="Identificador"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                    required>
@@ -167,7 +200,8 @@
         <form class="space-y-6" action="/esborrarTemps" method="POST" autocomplete="off">
             <h5 class="text-xl font-medium text-gray-900 dark:text-white">Esborrar Predicció Meteorológica</h5>
             <div>
-                <label for="id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Introdueix el Identificador de la Predicció</label>
+                <label for="id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Introdueix el
+                    Identificador de la Predicció</label>
                 <input type="number" name="id" id="id" placeholder="Identificador"
                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                        required>
@@ -179,5 +213,9 @@
         </form>
     </div>
 </main>
+<script>
+    const menu = document.getElementById('menu');
+    const toggle = () => menu.classList.toggle("hidden");
+</script>
 </body>
 </html>
