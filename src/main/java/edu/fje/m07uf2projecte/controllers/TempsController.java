@@ -64,6 +64,7 @@ public class TempsController {
             @RequestParam String ciutat,
             @RequestParam Date data,
             @RequestParam int temperatura,
+            @RequestParam String icon,
             Model model) {
 
         Long idTemps = Long.parseLong(id);
@@ -71,6 +72,7 @@ public class TempsController {
         te.setCiutat(ciutat);
         te.setData(data);
         te.setTemperatura(temperatura);
+        te.setIcon(icon);
         temps.afegirTemps(te);
         model.addAttribute("temps", temps.trobarTots());
         return "admin";
