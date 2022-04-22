@@ -53,9 +53,9 @@
                  th:each="prediccio: ${temps}" th:if="${prediccio.ciutat == 'Barcelona'}">
                 <div class="p-5">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                        th:text="${prediccio.data}"></h5>
+                        th:text="${prediccio.data}" th:data-data="${prediccio.data}"></h5>
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><i
-                            th:class="${prediccio.icon}"></i> <span th:text="${prediccio.temperatura}"></span> <i
+                            th:class="${prediccio.icon}" th:data-icon="${prediccio.icon}"></i> <span th:text="${prediccio.temperatura}" th:data-temperatura="${prediccio.temperatura}"></span> <i
                             class="wi wi-celsius"></i></h5>
                 </div>
             </div>
@@ -68,9 +68,9 @@
                  th:each="prediccio: ${temps}" th:if="${prediccio.ciutat == 'Tarragona'}">
                 <div class="p-5">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                        th:text="${prediccio.data}"></h5>
+                        th:text="${prediccio.data}" th:data-data="${prediccio.data}"></h5>
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><i
-                            th:class="${prediccio.icon}"></i> <span th:text="${prediccio.temperatura}"></span> <i
+                            th:class="${prediccio.icon}" th:data-icon="${prediccio.icon}"></i> <span th:text="${prediccio.temperatura}" th:data-temperatura="${prediccio.temperatura}"></span> <i
                             class="wi wi-celsius"></i></h5>
                 </div>
             </div>
@@ -83,9 +83,9 @@
                  th:each="prediccio: ${temps}" th:if="${prediccio.ciutat == 'Lleida'}">
                 <div class="p-5">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                        th:text="${prediccio.data}"></h5>
+                        th:text="${prediccio.data}" th:data-data="${prediccio.data}"></h5>
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><i
-                            th:class="${prediccio.icon}"></i> <span th:text="${prediccio.temperatura}"></span> <i
+                            th:class="${prediccio.icon}" th:data-icon="${prediccio.icon}"></i> <span th:text="${prediccio.temperatura}" th:data-temperatura="${prediccio.temperatura}"></span> <i
                             class="wi wi-celsius"></i></h5>
                 </div>
             </div>
@@ -98,9 +98,9 @@
                  th:each="prediccio: ${temps}" th:if="${prediccio.ciutat == 'Girona'}">
                 <div class="p-5">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                        th:text="${prediccio.data}"></h5>
+                        th:text="${prediccio.data}" th:data-data="${prediccio.data}"></h5>
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><i
-                            th:class="${prediccio.icon}"></i> <span th:text="${prediccio.temperatura}"></span> <i
+                            th:class="${prediccio.icon}" th:data-icon="${prediccio.icon}"></i> <span th:text="${prediccio.temperatura}" th:data-temperatura="${prediccio.temperatura}"></span> <i
                             class="wi wi-celsius"></i></h5>
                 </div>
             </div>
